@@ -1,5 +1,38 @@
+<div class="just-sidebar absolute">
+	<div class="header" style="background:color black;"></div>
+	<input type="checkbox" class="opensidebarmenu" id="opensidebarmenu">
+
+	<div class="circle">
+		<label for="opensidebarmenu" class="sidebaricontoggle">
+			<div class="spinner diagonal-part-1"></div>
+			<div class="spinner horizontal"></div>
+			<div class="spinner diagonal-part-2 "></div>
+		</label>
+	</div>
+
+	<div id="sidebarmenu">
+		<ul class="sidebarmenuinner">
+			<Router>
+				{#each routes as routeItem}
+					<Link to="{routeItem.path}">
+						<li>
+							{routeItem.name}
+							{#if routeItem.description}
+								<span>{routeItem.description}</span>
+							{/if}
+						</li>
+					</Link> 
+				{/each}
+			</Router>
+		</ul>
+	</div>
+</div>
+
 <script lang="ts">
-    
+import { Router, Route, Link } from "svelte-routing";
+// import { RouteItem } from '@/types/index.ts';
+
+export let routes: RouteItem[] = [];
 </script>
 
 <style lang="scss">
@@ -107,23 +140,3 @@
     }
 }
 </style>
-
-<div class="just-sidebar">
-    <div class="header" style="background:color black;"></div>
-    <input type="checkbox" class="opensidebarmenu" id="opensidebarmenu">
-
-    <div class="circle">
-        <label for="opensidebarmenu" class="sidebaricontoggle">
-            <div class="spinner diagonal-part-1"></div>
-            <div class="spinner horizontal"></div>
-            <div class="spinner diagonal-part-2 "></div>
-        </label>
-    </div>
-
-    <div id="sidebarmenu">
-        <ul class="sidebarmenuinner">
-            <li>TIM WILSONS ORY <span>ME </span></li>
-            <li><a href="--">eiei</a> <span>Test</span></li>
-        </ul>
-    </div>
-</div>

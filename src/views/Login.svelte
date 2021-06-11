@@ -1,11 +1,12 @@
+<template lang="pug">
+.login
+	JustInput(type="{'number'}")
+</template>
+
 <script lang="ts">
-    export let location;
+import JustInput from '@/components/JustInput.svelte';
 </script>
 
-<div class="login">
-    {location}
-</div>
-
-<style>
-/* shortener {} */
+<style lang="scss">
+// .login {}
 </style>

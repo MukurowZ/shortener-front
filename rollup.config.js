@@ -47,6 +47,7 @@ export default {
 		alias({
       entries: [
         { find: "@/src", replacement: path.resolve(projectRootDir, 'src') },
+        { find: "@/types", replacement: path.resolve(projectRootDir, 'src/types') },
         { find: "@/layout", replacement: path.resolve(projectRootDir, 'src/layout') },
         { find: "@/public", replacement: path.resolve(projectRootDir, 'public') },
         { find: "@/app", replacement: path.resolve(projectRootDir, 'src/app') },
