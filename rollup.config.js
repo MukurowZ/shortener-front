@@ -1,14 +1,16 @@
+import path from "path";
 import svelte from 'rollup-plugin-svelte';
 import commonjs from '@rollup/plugin-commonjs';
+import alias from "@rollup/plugin-alias";
 import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
-import preprocess from 'svelte-preprocess';
 
-// For Type Script
+// For Type Script & Pug & Tailwind & PostCSS
 import autoPreprocess from 'svelte-preprocess';
-// import typescript from '@rollup/plugin-typescript';
+
+const projectRootDir = path.resolve(__dirname);
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -42,6 +44,17 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		alias({
+      entries: [
+        { find: "@/src", replacement: path.resolve(projectRootDir, 'src') },
+        { find: "@/layout", replacement: path.resolve(projectRootDir, 'src/layout') },
+        { find: "@/public", replacement: path.resolve(projectRootDir, 'public') },
+        { find: "@/app", replacement: path.resolve(projectRootDir, 'src/app') },
+        { find: "@/components", replacement: path.resolve(projectRootDir, 'src/components') },
+        { find: "@/util", replacement: path.resolve(projectRootDir, 'src/util') },
+        { find: "@/stores", replacement: path.resolve(projectRootDir, 'src/stores') }
+      ]
+    }),
 		svelte({
 			compilerOptions: {
 				hydratable: true,
@@ -50,7 +63,15 @@ export default {
 				// we'll extract any component CSS out into
 				// a separate file - better for performance
 			},
-			preprocess: preprocess()
+			preprocess: autoPreprocess({
+				sourceMap: !production,
+				postcss: {
+					plugins: [
+						require('autoprefixer')(),
+						require('tailwindcss')(),
+					],
+				}
+			})
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
