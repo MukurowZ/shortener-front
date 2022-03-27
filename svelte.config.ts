@@ -1,6 +1,10 @@
-const sveltePreprocess = require('svelte-preprocess');
-const path = require('path');
+import sveltePreprocess from 'svelte-preprocess';
+import path from 'path'
 
-module.exports = {
-    preprocess: sveltePreprocess({ includePaths: [path.join(__dirname, 'relative/path')] })
-};
+export default {
+  // Consult https://github.com/sveltejs/svelte-preprocess
+  // for more information about preprocessors
+  preprocess: sveltePreprocess(
+    { includePaths: [path.join(__dirname, 'relative/path')] }
+  )
+}

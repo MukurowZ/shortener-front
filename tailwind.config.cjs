@@ -1,5 +1,4 @@
-const production = !process.env.ROLLUP_WATCH;
-module.exports = {
+module.export = {
   future: {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,

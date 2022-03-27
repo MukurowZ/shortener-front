@@ -114,7 +114,7 @@ export let routes: RouteItem[] = [];
             box-sizing: border-box;
             position: relative;
             float: left;
-            margin-top: 3px;
+            margin-top: 0.2rem;
         }
     
         .diagonal-part-1 {
@@ -125,8 +125,12 @@ export let routes: RouteItem[] = [];
         }
     
         .diagonal-part-2 {
-            margin-top: 12px;
-            @apply diagonal-part-1 ;
+            position: relative;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            float: left;
+            margin-top: 0.2rem;
+            // @apply diagonal-part-1 ;
         }
     }
 

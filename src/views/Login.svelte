@@ -1,6 +1,7 @@
 <template lang="pug">
 .login
 	JustInput(type="{'number'}")
+
 </template>
 
 <script lang="ts">
